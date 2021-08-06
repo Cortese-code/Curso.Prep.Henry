@@ -5,7 +5,7 @@ function mayuscula(nombre) {
   //ej: Recibe "mario" ----> Devuelve "Mario"
   //Tu código:
   
-  return nombre[0].toUpperCase()+nombre.charAt(0);
+  return nombre[0].toUpperCase()+nombre.slice(1);
 }
 
 function invocarCallback(cb) {
@@ -26,12 +26,12 @@ function sumarArray(numeros, cb) {
   // Pasa el resultado a `cb`
   // No es necesario devolver nada
   //Tu código:
-  var numeros = []
+   
   var sumarArray = 0;
-  for(i = 0; i < numeros.length; i++){
+  for(var i = 0; i < numeros.length; i++){
     sumarArray = sumarArray + numeros[i];
   }
-  cb(sumarArray);
+  return cb(sumarArray);
 }
 
 function forEach(array, cb) {
@@ -50,19 +50,40 @@ function map(array, cb) {
   // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
   // El nuevo array debe tener la misma longitud que el array del argumento
   //Tu código:
-
+  var nuevoArray=[]
+  
+  for (var i = 0; i<array.length; i++){
+    nuevoArray.push(cb(array[i]));
+    nuevoArray[i] =cb(array[i])
+    
+  }return nuevoArray;
+   
 }
+
+
 
 function filter(array) {
   //Filtrar todos los elementos del array que comiencen con la letra "a".
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
+  var nuevoArray =[]
+for(var i = 0; i < array.length; i++) {
+  if(array[i][0]==='a'){
+    nuevoArray.push(array[i])
+  }
 }
+return nuevoArray;
 
+
+
+}
 // No modificar nada debajo de esta línea
 // --------------------------------
 
-module.exports = {
+module.exports ={
+
+
+
   mayuscula,
   invocarCallback,
   operacionMatematica,
@@ -70,4 +91,10 @@ module.exports = {
   forEach,
   map,
   filter
+
+
+
+
+
 };
+
